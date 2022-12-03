@@ -5,8 +5,8 @@ const DEBOUNCE_DELAY = 300;
 
 const countryInfo = document.querySelector('div.country-info');
 const inputField = document.querySelector('input#search-box');
-const fetchCountries = name => {
-  name = inputField.value.trim();
+const fetchCountries = event => {
+  const name = event.currentTarge.trim();
   if (name.length === 0) return;
   return fetch(
     (url = `https://restcountries.com/v2/name/${name}?fields=name,population,flags,languages`)
@@ -32,18 +32,19 @@ function renderCountriesList(countries) {
 }
 function renderCountryCard(country) {
   const parsedLangs = country.languages.map(lang => lang.name).join(', ');
-  const markup = `        
+  const markup = ` <div class=country>       
             <b>Name</b>: ${country.name}</p>
             <b>Population</b>: ${country.population}</p>
             <img src="${country.flags.svg}" alt="${country.name} flag" width="400" >
              <b>Languages</b>: ${parsedLangs}</p>
+             </div>
         
       `;
-
   countryInfo.innerHTML = markup;
 }
 
 const countryListener = country => {
+  if (country === 0) return;
   fetchCountries(country)
     .then(countries => {
       if (countries.length > 10)
@@ -52,7 +53,10 @@ const countryListener = country => {
       return renderCountriesList(countries);
     })
     .catch(error => {
-      Notify.failure('Oops, there is no country with that namen ');
+      Notify.failure('Oops, there is no country with that name');
     });
 };
-addEventListener('input', debounce(countryListener, DEBOUNCE_DELAY));
+document.addEventListener(
+  'input',
+  debounce(countryListener(event), DEBOUNCE_DELAY)
+);
