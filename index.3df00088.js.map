@@ -1,0 +1,1 @@
+{"mappings":"oeAAA,IAAAA,EAAAC,EAAA,SACAC,QAAQC,IAAI,iBAAkBH,EAAAI","sources":["src/fetchCountries.js"],"sourcesContent":["import { fetchCountries } from './index.js';\nconsole.log('fetchCountries', fetchCountries);\n"],"names":["$2Fivl","parcelRequire","console","log","fetchCountries"],"version":3,"file":"index.3df00088.js.map"}
