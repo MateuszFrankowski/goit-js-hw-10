@@ -1,1 +1,0 @@
-{"mappings":"gfAAA,IAAAA,EAAAC,EAAA,SACAC,QAAQC,IAAI,iBAAkBH,EAAAI,e","sources":["src/fetchCountries.js"],"sourcesContent":["import { fetchCountries } from './index.js';\nconsole.log('fetchCountries', fetchCountries);\n"],"names":["$fSCrk","parcelRequire","console","log","fetchCountries"],"version":3,"file":"index.68d9b4e4.js.map"}
