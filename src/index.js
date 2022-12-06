@@ -9,6 +9,10 @@ const countryInfo = document.querySelector('div.country-info');
 const inputField = document.querySelector('input#search-box');
 
 const countryListener = () => {
+  if (inputField.validity.patternMismatch === true) {
+    countryInfo.innerHTML = '';
+    return Notify.failure('Oops, use letters only');
+  }
   const country = inputField.value;
   if (country.length === 0) return (countryInfo.innerHTML = '');
   fetchCountries(country)

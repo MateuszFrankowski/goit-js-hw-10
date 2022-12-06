@@ -7,11 +7,15 @@
     <title>Homework 10</title>
   </head>
   <body>
-    <input type="text" id="search-box" pattern="^[a-zA-Z ]*$" />
+    <input
+      type="text"
+      id="search-box"
+      placeholder="Username"
+      pattern="^[a-zA-Z -]*$"
+    />
     <ul class="country-list"></ul>
     <div class="country-info"></div>
 
     <script src="index.js" type="module"></script>
-    <script src="fetchCountries.js" type="module"></script>
   </body>
 </html>
