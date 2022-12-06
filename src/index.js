@@ -1,6 +1,8 @@
 import './css/styles.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import debounce from 'lodash.debounce';
+import { fetchCountries } from './fetchCountries.js';
+
 const DEBOUNCE_DELAY = 300;
 
 const countryInfo = document.querySelector('div.country-info');
@@ -17,21 +19,11 @@ const countryListener = () => {
       return renderCountriesList(countries);
     })
     .catch(error => {
+      countryInfo.innerHTML = '';
       Notify.failure('Oops, there is no country with that name');
     });
 };
-export const fetchCountries = country => {
-  const name = country.trim();
-  if (name.length === 0) return;
-  return fetch(
-    `https://restcountries.com/v2/name/${name}?fields=name,population,flags,languages`
-  ).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
-};
+
 function renderCountriesList(countries) {
   const markup = countries
     .map(country => {

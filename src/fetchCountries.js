@@ -1,2 +1,12 @@
-import { fetchCountries } from './index.js';
-console.log('fetchCountries', fetchCountries);
+export const fetchCountries = country => {
+  const name = country.trim();
+  if (name.length === 0) return;
+  return fetch(
+    `https://restcountries.com/v2/name/${name}?fields=name,population,flags,languages`
+  ).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    return response.json();
+  });
+};
