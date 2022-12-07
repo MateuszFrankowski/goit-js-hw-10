@@ -24,3 +24,9 @@ img {
 .country {
   margin-bottom: 50px;
 }
+.countries {
+  display: flex;
+  gap: 10px;
+  vertical-align: baseline;
+  margin-bottom: 10px;
+}

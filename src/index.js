@@ -32,10 +32,11 @@ function renderCountriesList(countries) {
   const markup = countries
     .map(country => {
       return `  
-      <div class=country>      
-            <b>Name</b>: ${country.name}</p>
-            <b>Population</b>: ${country.population}</p>
-            <img src="${country.flags.svg}" alt="${country.name} flag" width="200" >  
+      <div class=countries> 
+       <img src="${country.flags.svg}" alt="${country.name} flag" width="40" >       
+            ${country.name}</p>
+           
+           
              </div>    
       `;
     })
