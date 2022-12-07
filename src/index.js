@@ -20,11 +20,16 @@ const countryListener = () => {
       if (countries.length > 10)
         return Notify.info('Too many countries found. Be more specific!');
       if (countries.length === 1) return renderCountryCard(countries[0]);
+      const oneCountry = countries.find(
+        cName => cName.name.toLowerCase() === country.toLowerCase()
+      );
+      console.log(oneCountry);
+      if (oneCountry) return renderCountryCard(oneCountry);
       return renderCountriesList(countries);
     })
     .catch(error => {
       countryInfo.innerHTML = '';
-      Notify.failure('Oops, there is no country with that name');
+      Notify.failure('Oops, there is no country with that name', error);
     });
 };
 
@@ -34,8 +39,7 @@ function renderCountriesList(countries) {
       return `  
       <div class=countries> 
        <img src="${country.flags.svg}" alt="${country.name} flag" width="40" >       
-            ${country.name}</p>
-           
+            ${country.name}</p>         
            
              </div>    
       `;
